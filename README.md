@@ -1,0 +1,1 @@
+# SPPU_COMP_DBMSL_Practicals
