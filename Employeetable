@@ -44,12 +44,17 @@ VALUES ('Robert Brown', 'Delhi', '2023-07-18', 'Sales');
 
 INSERT INTO emp (Ename, Address, Joindate, Post)
 VALUES ('Emily Davis', 'Nashik', '2023-02-05', 'Designer');
+
+
 Create Index on Ename:
 Creating an index on the Ename field helps in faster retrieval of data when searching or filtering by employee name.
 CREATE INDEX idx_ename ON emp(Ename);
+
+SHOW INDEX FROM emp;
 Create a View on the emp Table:
 The view will display only the Ename and Salary. Assuming Salary is a hypothetical field that might exist in the extended table, it can be included. If the Salary column doesn’t exist yet, you can skip it in the view or modify the structure later.
 -- Assuming Salary field exists
-CREATE VIEW emp_view AS
-SELECT Ename, 50000 AS Salary  -- Static salary for simplicity; otherwise, include the actual salary field
-FROM emp;
+CREATE VIEW emp_view AS SELECT Ename, 50000 AS Salary FROM emp;
+SELECT * FROM emp_view;
+-- Static salary for simplicity; otherwise, include the actual salary field
+
