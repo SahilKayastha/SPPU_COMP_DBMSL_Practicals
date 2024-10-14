@@ -1,3 +1,4 @@
+Q.6) SQL Quries
 1.	Create a table emp with following fields and constraints 
 Eno –(Constraint:- primary key and apply sequence starts with 101) ,
 Ename –(Constraint :- not null) 
@@ -19,43 +20,36 @@ CREATE TABLE emp (
 );
 
 -- Create a sequence for the Eno field starting with 101
-CREATE SEQUENCE emp_seq START WITH 101 INCREMENT BY 1;
-OR
 ALTER TABLE emp AUTO_INCREMENT = 101;
 
 -- Add the Post field to the table after creation
 ALTER TABLE emp
 ADD Post VARCHAR2(50);
 
-Insert some data in emp table
--- Insert some sample data using the sequence for Eno
-INSERT INTO emp (Eno, Ename, Address, Joindate, Post)
-VALUES (emp_seq.NEXTVAL, 'John Doe', 'Pune', TO_DATE('2023-01-10', 'YYYY-MM-DD'), 'Manager');
+-- Inserting data into the `emp` table without specifying `Eno` (as it's auto-incremented)
+INSERT INTO emp (Ename, Address, Joindate, Post)
+VALUES ('John Doe', 'Pune', '2023-01-10', 'Manager');
 
-INSERT INTO emp (Eno, Ename, Address, Joindate, Post)
-VALUES (emp_seq.NEXTVAL, 'Jane Smith', DEFAULT, TO_DATE('2023-03-15', 'YYYY-MM-DD'), 'Developer');
+INSERT INTO emp (Ename, Address, Joindate, Post)
+VALUES ('Jane Smith', DEFAULT, '2023-03-15', 'Developer');
 
-INSERT INTO emp (Eno, Ename, Address, Joindate, Post)
-VALUES (emp_seq.NEXTVAL, 'Michael Johnson', 'Mumbai', TO_DATE('2023-05-20', 'YYYY-MM-DD'), 'Analyst');
+INSERT INTO emp (Ename, Address, Joindate, Post)
+VALUES ('Michael Johnson', 'Mumbai', '2023-05-20', 'Analyst');
 
-INSERT INTO emp (Eno, Ename, Address, Joindate, Post)
-VALUES (emp_seq.NEXTVAL, 'Linda White', 'Nashik', TO_DATE('2022-12-01', 'YYYY-MM-DD'), 'HR');
+INSERT INTO emp (Ename, Address, Joindate, Post)
+VALUES ('Linda White', 'Nashik', '2022-12-01', 'HR');
 
-INSERT INTO emp (Eno, Ename, Address, Joindate, Post)
-VALUES (emp_seq.NEXTVAL, 'Robert Brown', 'Delhi', TO_DATE('2023-07-18', 'YYYY-MM-DD'), 'Sales');
+INSERT INTO emp (Ename, Address, Joindate, Post)
+VALUES ('Robert Brown', 'Delhi', '2023-07-18', 'Sales');
 
-INSERT INTO emp (Eno, Ename, Address, Joindate, Post)
-VALUES (emp_seq.NEXTVAL, 'Emily Davis', 'Nashik', TO_DATE('2023-02-05', 'YYYY-MM-DD'), 'Designer');
-
+INSERT INTO emp (Ename, Address, Joindate, Post)
+VALUES ('Emily Davis', 'Nashik', '2023-02-05', 'Designer');
 Create Index on Ename:
 Creating an index on the Ename field helps in faster retrieval of data when searching or filtering by employee name.
 CREATE INDEX idx_ename ON emp(Ename);
-
-
 Create a View on the emp Table:
 The view will display only the Ename and Salary. Assuming Salary is a hypothetical field that might exist in the extended table, it can be included. If the Salary column doesn’t exist yet, you can skip it in the view or modify the structure later.
 -- Assuming Salary field exists
 CREATE VIEW emp_view AS
 SELECT Ename, 50000 AS Salary  -- Static salary for simplicity; otherwise, include the actual salary field
 FROM emp;
-
